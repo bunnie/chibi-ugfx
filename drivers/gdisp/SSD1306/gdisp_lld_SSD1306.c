@@ -74,6 +74,7 @@
 LLDSPEC bool_t gdisp_lld_init(GDisplay *g) {
 	// The private area is the display surface.
 	g->priv = gfxAlloc(GDISP_SCREEN_HEIGHT/8 * SSD1306_PAGE_WIDTH);
+	osalDbgAssert(g->priv != NULL, "Can't allocate gfx frame buffer");
 
 	// Fill in the prefix command byte on each page line of the display buffer
 	// We can do it during initialisation as this byte is never overwritten.
